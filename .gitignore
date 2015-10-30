@@ -1,0 +1,10 @@
+.gradle/
+node_modules/
+bower_components/
+
+# Build artifacts
+build/*
+!build/index.html
+!build/commonltr.css
+!build/app.js
+!build/data.json

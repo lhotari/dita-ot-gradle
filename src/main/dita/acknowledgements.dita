@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Topic//EN" "topic.dtd">
+
+<topic id="acknowledgements">
+  <title>Acknowledgements</title>
+
+  <body>
+    <ul>
+      <li>The <xref
+        href="http://asciidoctor.org/docs/asciidoctor-gradle-plugin/"
+        scope="external">Asciidoctor Gradle Plugin</xref>, which is an
+        extremely useful resource on how to write a custom Gradle plugin.</li>
+    </ul>
+  </body>
+
+  <related-links scope="external" format="html">
+    <link href="http://asciidoctor.org">
+      <linktext>Asciidoctor</linktext>
+    </link>
+  </related-links>
+</topic>

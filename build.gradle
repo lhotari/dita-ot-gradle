@@ -1,0 +1,47 @@
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+
+    dependencies {
+        classpath 'com.github.eerohele:dita-ot-gradle:0.1.0'
+    }
+}
+
+plugins {
+    id 'com.moowork.node' version '0.11'
+    id 'com.moowork.gulp' version '0.11'
+}
+
+apply plugin: 'com.github.eerohele.dita-ot-gradle'
+
+defaultTasks 'publish'
+
+ditaOt.dir '/opt/dita-ot'
+
+task copyResources(type: Copy) {
+    from 'src/main/resources/data.json'
+    into buildDir
+}
+
+dita {
+    dependsOn 'copyResources'
+
+    input file('src/main/dita/index.ditamap')
+    filter 'src/main/ditaval/default.ditaval'
+    transtype 'html5'
+    devMode true
+
+    properties {
+        property(name: 'processing-mode', value: 'strict')
+        property(name: 'args.xhtml.toc', value: 'toc')
+    }
+}
+
+tasks.gulp_styles.dependsOn(tasks.npm_install)
+
+task publish(dependsOn: ['dita', 'gulp_styles'])
+
+npm_install {
+    args = ['--loglevel', 'error']
+}
