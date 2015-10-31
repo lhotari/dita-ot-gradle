@@ -181,16 +181,17 @@ var _ = _interopRequireWildcard(_utils);
 var options = {
   mapping: {
     'OS X': 'osx',
-    'Windows': 'windows',
+    'Windows NT': 'windows',
     'Linux': 'linux'
   }
 };
 
 exports.options = options;
 function clickHandler(selectedProfile, event) {
-  var newProfile = event.currentTarget.textContent;
-  selectedProfile.textContent = newProfile;
-  profiler.profile('platform', options.mapping[newProfile]);
+  var newProfile = event.currentTarget;
+  var platform = options.mapping[newProfile.getAttribute('data-props')];
+  selectedProfile.textContent = newProfile.textContent;
+  profiler.profile('platform', platform);
 }
 
 function initialize(selector) {
@@ -211,7 +212,7 @@ function initialize(selector) {
   span.classList.add('platform-profiler-selected');
 
   span.textContent = _.filter(li, function (el) {
-    return el.textContent === os;
+    return el.getAttribute('data-props') === os;
   })[0].textContent;
 
   span.addEventListener('mouseenter', function (event) {

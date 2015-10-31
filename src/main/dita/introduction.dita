@@ -22,9 +22,9 @@
 
     <div outputclass="platform-profiler">Choose your operating system:
       <ul outputclass="hidden">
-        <li>OS X</li>
-        <li>Windows</li>
-        <li>Linux</li>
+        <li props="OS X">OS X</li>
+        <li props="Windows NT">Windows</li>
+        <li props="Linux">Linux</li>
       </ul></div>
   </body>
 </topic>

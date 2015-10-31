@@ -6,15 +6,16 @@ import * as _ from '../utils'
 export var options = {
   mapping: {
     'OS X': 'osx',
-    'Windows': 'windows',
+    'Windows NT': 'windows',
     'Linux': 'linux'
   }
 }
 
 function clickHandler(selectedProfile, event) {
-  let newProfile = event.currentTarget.textContent
-  selectedProfile.textContent = newProfile
-  profiler.profile('platform', options.mapping[newProfile])
+  let newProfile = event.currentTarget
+  let platform = options.mapping[newProfile.getAttribute('data-props')]
+  selectedProfile.textContent = newProfile.textContent
+  profiler.profile('platform', platform)
 }
 
 export function initialize(selector, userOptions = {}) {
@@ -31,7 +32,7 @@ export function initialize(selector, userOptions = {}) {
   span.classList.add('platform-profiler-selected')
 
   span.textContent = _.filter(li, el => {
-    return el.textContent === os
+    return el.getAttribute('data-props') === os
   })[0].textContent
 
   span.addEventListener('mouseenter', event => {
