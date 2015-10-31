@@ -60,8 +60,10 @@
           voilà: your published document should appear in your project's build
           directory (<filepath>build</filepath> by default).
         </p>
-        <p>Just like Gradle, <keyword keyref="plugin.short-name"/> is
-        platform-independent.</p>
+
+        <p>Just like Gradle, <keyword keyref="plugin.short-name"/> works on all
+        major platforms.</p>
+
         <p audience="developer">(The <term>API</term> is pretty nice, too.)</p>
       </section>
 
