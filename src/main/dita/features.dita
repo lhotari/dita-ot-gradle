@@ -37,6 +37,11 @@
               the <term>JVM</term> warmup time.
         </p>
 
+        <note><p>You must have <xref
+          href="https://docs.gradle.org/current/userguide/gradle_daemon.html"
+          scope="external" format="html">the Gradle Daemon enabled</xref> to get
+          the performance benefit.</p></note>
+
         <p audience="developer">If you're feeling adventurous and you have a
           multi-project build, you can also try Gradle's
           <option>--parallel</option> option to build your documents in parallel
