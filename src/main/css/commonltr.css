@@ -23,8 +23,6 @@ body {
   margin-bottom: 1vr;
 }
 
-body:after { background: none !important; }
-
 h1 {
   font-size: 36px;
   font-weight: 300;
