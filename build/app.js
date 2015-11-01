@@ -190,8 +190,13 @@ exports.options = options;
 function clickHandler(selectedProfile, event) {
   var newProfile = event.currentTarget;
   var platform = options.mapping[newProfile.getAttribute('data-props')];
-  selectedProfile.textContent = newProfile.textContent;
-  profiler.profile('platform', platform);
+
+  if (platform) {
+    selectedProfile.textContent = newProfile.textContent;
+    profiler.profile('platform', platform);
+  } else {
+    selectedProfile.textContent = 'Other';
+  }
 }
 
 function initialize(selector) {

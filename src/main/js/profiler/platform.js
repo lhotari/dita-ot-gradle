@@ -14,8 +14,13 @@ export var options = {
 function clickHandler(selectedProfile, event) {
   let newProfile = event.currentTarget
   let platform = options.mapping[newProfile.getAttribute('data-props')]
-  selectedProfile.textContent = newProfile.textContent
-  profiler.profile('platform', platform)
+
+  if (platform) {
+    selectedProfile.textContent = newProfile.textContent
+    profiler.profile('platform', platform)
+  } else {
+    selectedProfile.textContent = 'Other'
+  }
 }
 
 export function initialize(selector, userOptions = {}) {

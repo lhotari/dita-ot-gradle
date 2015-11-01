@@ -70,3 +70,9 @@ dfn {
 .hidden {
   display: none !important;
 }
+
+@media only screen and (max-width: 790px) {
+  #audience-profiler, .platform-profiler {
+    display: none;
+  }
+}
