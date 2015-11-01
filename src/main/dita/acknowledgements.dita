@@ -13,10 +13,4 @@
         extremely useful resource on how to write a custom Gradle plugin.</li>
     </ul>
   </body>
-
-  <related-links scope="external" format="html">
-    <link href="http://asciidoctor.org">
-      <linktext>Asciidoctor</linktext>
-    </link>
-  </related-links>
 </topic>
