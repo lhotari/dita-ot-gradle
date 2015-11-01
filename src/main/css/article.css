@@ -25,13 +25,14 @@ article article:last-of-type {
 
 article h1 {
   lost-center: var(--main-width);
+  position: relative;
 }
 
 article h1:before {
   content: '∞';
   position: absolute;
   width: 50px;
-  left: -40px;
+  left: -25px;
   color: var(--text-color-light);
 }
 

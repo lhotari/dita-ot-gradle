@@ -5,7 +5,7 @@
   --font-monospace: 'Source Code Pro', Monaco, 'Courier New', monospace;
   --font-sans-serif: 'Open Sans', 'Helvetica Neue', Helvetica, sans-serif;
   --link-color-default: #1DBA85;
-  --main-width: 790px;
+  --main-width: 790px .5vr;
   --text-color-complement: #0DBDED;
   --text-color-default: color(black lightness(20%));
   --text-color-light: color(var(--text-color-default) lightness(50%));
