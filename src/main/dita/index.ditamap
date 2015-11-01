@@ -28,6 +28,7 @@
   <topicref href="introduction.dita"/>
   <topicref href="features.dita"/>
   <topicref href="install.dita"/>
+  <topicref href="options.dita"/>
   <topicref href="acknowledgements.dita"/>
 
   <!-- Can't use this because of #1816. -->

@@ -63,6 +63,7 @@ dfn {
 @import 'dita/task';
 @import 'dita/notes';
 @import 'dita/footnotes';
+@import 'dita/properties';
 
 @import 'profiler/audience';
 @import 'profiler/platform';
