@@ -1,19 +1,19 @@
 import * as profiler from './common'
 import * as _ from '../utils'
 
-// A map from platform names as reported by platform.js to DITA conditions
-// (data attribute values).
-export var options = {
-  mapping: {
-    'OS X': 'osx',
-    'Windows NT': 'windows',
-    'Linux': 'linux'
+function platformNameToDitaCondition(os) {
+  if (_.contains(os, 'OS X')) {
+    return 'osx'
+  } else if (_.contains(os, 'Linux')) {
+    return 'linux'
+  } else {
+    return 'windows'
   }
 }
 
 function clickHandler(selectedProfile, event) {
   let newProfile = event.currentTarget
-  let platform = options.mapping[newProfile.getAttribute('data-props')]
+  let platform = newProfile.getAttribute('data-props');
 
   if (platform) {
     selectedProfile.textContent = newProfile.textContent
@@ -27,7 +27,7 @@ export function initialize(selector, userOptions = {}) {
   options = Object.assign(options, userOptions)
 
   // Use platform.js to detect current OS.
-  let os = platform.os.family
+  let os = platformNameToDitaCondition(platform.os.family)
 
   let div = document.querySelector(selector)
   let ul = div.querySelector('ul')
@@ -54,5 +54,5 @@ export function initialize(selector, userOptions = {}) {
     el.addEventListener('click', clickHandler.bind(this, span))
   })
 
-  profiler.profile('platform', options.mapping[os])
+  profiler.profile('platform', os);
 }

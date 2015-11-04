@@ -176,20 +176,19 @@ var _utils = require('../utils');
 
 var _ = _interopRequireWildcard(_utils);
 
-// A map from platform names as reported by platform.js to DITA conditions
-// (data attribute values).
-var options = {
-  mapping: {
-    'OS X': 'osx',
-    'Windows NT': 'windows',
-    'Linux': 'linux'
+function platformNameToDitaCondition(os) {
+  if (_.contains(os, 'OS X')) {
+    return 'osx';
+  } else if (_.contains(os, 'Linux')) {
+    return 'linux';
+  } else {
+    return 'windows';
   }
-};
+}
 
-exports.options = options;
 function clickHandler(selectedProfile, event) {
   var newProfile = event.currentTarget;
-  var platform = options.mapping[newProfile.getAttribute('data-props')];
+  var platform = newProfile.getAttribute('data-props');
 
   if (platform) {
     selectedProfile.textContent = newProfile.textContent;
@@ -204,10 +203,10 @@ function initialize(selector) {
 
   var userOptions = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
-  exports.options = options = Object.assign(options, userOptions);
+  options = Object.assign(options, userOptions);
 
   // Use platform.js to detect current OS.
-  var os = platform.os.family;
+  var os = platformNameToDitaCondition(platform.os.family);
 
   var div = document.querySelector(selector);
   var ul = div.querySelector('ul');
@@ -234,7 +233,7 @@ function initialize(selector) {
     el.addEventListener('click', clickHandler.bind(_this, span));
   });
 
-  profiler.profile('platform', options.mapping[os]);
+  profiler.profile('platform', os);
 }
 
 },{"../utils":5,"./common":3}],5:[function(require,module,exports){
@@ -246,6 +245,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.forEach = forEach;
 exports.filter = filter;
 exports.toTitleCase = toTitleCase;
+exports.contains = contains;
 
 function forEach(a, fn) {
   return [].forEach.call(a, fn);
@@ -257,6 +257,10 @@ function filter(a, fn) {
 
 function toTitleCase(value) {
   return value.substring(0, 1).toUpperCase() + value.substring(1);
+}
+
+function contains(a, b) {
+  return a.indexOf(b) > -1;
 }
 
 },{}],6:[function(require,module,exports){
