@@ -37,14 +37,15 @@ gulp.task('styles', function() {
 gulp.task('scripts', function () {
   return gulp.src(paths.jsSource + 'app.js')
       .pipe(through2.obj(function (file, enc, next) {
-          browserify(file.path, { debug: process.env.NODE_ENV === 'development' })
-              .transform(require('babelify'))
-              .bundle(function (err, res) {
-                  if (err) { return next(err); }
+          browserify([require.resolve("babel-polyfill"), file.path], {
+            debug: process.env.NODE_ENV === 'development' 
+          }).transform(require('babelify'))
+            .bundle(function (err, res) {
+                if (err) { return next(err); }
 
-                  file.contents = res;
-                  next(null, file);
-              });
+                file.contents = res;
+                next(null, file);
+            });
       }))
       .on('error', function (error) {
           console.log(error.stack);
