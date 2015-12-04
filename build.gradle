@@ -1,10 +1,8 @@
 plugins {
-    id 'com.github.eerohele.dita-ot-gradle' version '0.1.0'
+    id 'com.github.eerohele.dita-ot-gradle' version '0.2.0'
     id 'com.moowork.node' version '0.11'
     id 'com.moowork.gulp' version '0.11'
 }
-
-apply plugin: 'com.github.eerohele.dita-ot-gradle'
 
 defaultTasks 'publish'
 
@@ -31,7 +29,7 @@ dita {
 
 tasks.gulp_styles.dependsOn(tasks.npm_install)
 
-task publish(dependsOn: ['dita', 'gulp_styles'])
+task publish(dependsOn: ['dita', 'gulp_styles', 'gulp_scripts'])
 
 npm_install {
     args = ['--loglevel', 'error']

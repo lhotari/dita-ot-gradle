@@ -5,6 +5,14 @@
 <map id="variables">
   <title>Variables</title>
 
+  <keydef keys="plugin.version">
+    <topicmeta>
+      <keywords>
+        <keyword>0.2.0</keyword>
+      </keywords>
+    </topicmeta>
+  </keydef>
+
   <keydef keys="plugin.long-name">
     <topicmeta>
       <keywords>

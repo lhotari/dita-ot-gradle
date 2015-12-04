@@ -59,6 +59,13 @@
         <propdesc>Multiple input files ➞ single output directory. Default:
           <codeph>false</codeph>.</propdesc>
       </property>
+
+      <property>
+        <proptype>Boolean</proptype>
+        <propvalue><option>useAssociatedFilter</option></propvalue>
+        <propdesc>For every input file, use DITAVAL file in same directory with
+          same basename. Default: <codeph>false</codeph>.</propdesc>
+      </property>
     </properties>
   </refbody>
 
