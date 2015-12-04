@@ -30,7 +30,7 @@
             values.</note>
 
           <codeblock outputclass="language-groovy" platform="windows">plugins {
-    id 'com.github.eerohele.dita-ot-gradle' version '0.1.0'
+    id 'com.github.eerohele.dita-ot-gradle' version '0.2.0'
 }
 
 defaultTasks 'dita'
@@ -47,7 +47,7 @@ dita {
     transtype 'html5'
 }</codeblock>
           <codeblock outputclass="language-groovy" platform="osx linux">plugins {
-    id 'com.github.eerohele.dita-ot-gradle' version '0.1.0'
+    id 'com.github.eerohele.dita-ot-gradle' version '0.2.0'
 }
 
 defaultTasks 'dita'
