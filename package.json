@@ -1,6 +1,5 @@
 {
   "name": "dita-ot-gradle",
-  "version": "0.1.0",
   "description": "DITA-OT Gradle plugin",
   "main": "gulpfile.js",
   "devDependencies": {
