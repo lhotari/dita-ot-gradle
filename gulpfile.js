@@ -56,7 +56,7 @@ gulp.task('scripts', function () {
 
 });
 
-gulp.watch(paths.cssSource + '**/*.css', ['styles']);
-gulp.watch(paths.jsSource + '**/*.js', ['scripts']);
+// gulp.watch(paths.cssSource + '**/*.css', ['styles']);
+// gulp.watch(paths.jsSource + '**/*.js', ['scripts']);
 
 gulp.task('default', ['styles', 'scripts']);
