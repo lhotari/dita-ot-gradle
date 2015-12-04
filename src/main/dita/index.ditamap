@@ -16,10 +16,6 @@
       <prodname>
         <keyword keyref="plugin.long-name"/>
       </prodname>
-
-      <vrmlist>
-        <vrm version="0" release="1" modification="0"/>
-      </vrmlist>
     </prodinfo>
   </topicmeta>
 
