@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA 1.3 Map//EN" "map.dtd">
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
 
 <map id="variables">
   <title>Variables</title>
@@ -8,7 +8,7 @@
   <keydef keys="plugin.version">
     <topicmeta>
       <keywords>
-        <keyword>0.2.0</keyword>
+        <keyword>0.2.1</keyword>
       </keywords>
     </topicmeta>
   </keydef>
