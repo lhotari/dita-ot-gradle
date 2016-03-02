@@ -7,18 +7,6 @@ class DitaOtPlugin implements Plugin<Project> {
     static final String DITA = 'dita'
     static final String DITA_OT = 'ditaOt'
 
-    /** Add runtime and provided dependencies to Ant classloader.
-     *
-     * @since 0.1.0
-     */
-    void augmentAntClassLoader(Project project) {
-        URLClassLoader classLoader = org.apache.tools.ant.Project.classLoader
-
-        (project.configurations.runtime + project.configurations.provided).each {
-            classLoader.addURL(project.file(it).toURI().toURL())
-        }
-    }
-
     void setRepositories(Project project) {
         project.repositories {
           mavenCentral()
@@ -69,8 +57,11 @@ class DitaOtPlugin implements Plugin<Project> {
             augmentAntClassLoader(project)
         }
 
-        project.task(DITA, type: DitaOtTask, group: 'Documentation',
+        def task = project.task(DITA, type: DitaOtTask, group: 'Documentation',
             description: 'Publishes DITA documentation with DITA Open Toolkit.')
+        task.conventionMapping.with {
+            ditaOtClasspath = { project.configurations.runtime + project.configurations.provided }
+        }
     }
 
 }

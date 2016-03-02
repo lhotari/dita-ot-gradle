@@ -1,16 +1,18 @@
 package com.github.eerohele
 
+import org.apache.commons.io.FilenameUtils as FilenameUtils
 import org.gradle.api.DefaultTask
 import org.gradle.api.InvalidUserDataException
-import org.gradle.api.tasks.TaskAction
+import org.gradle.api.file.FileCollection
+import org.gradle.api.file.FileTree
+import org.gradle.api.internal.project.IsolatedAntBuilder
 import org.gradle.api.tasks.InputFiles
 import org.gradle.api.tasks.OutputDirectories
 import org.gradle.api.tasks.SkipWhenEmpty
+import org.gradle.api.tasks.TaskAction
 import org.gradle.api.tasks.util.PatternSet
-import org.gradle.api.file.FileCollection
-import org.gradle.api.file.FileTree
 
-import org.apache.commons.io.FilenameUtils as FilenameUtils
+import javax.inject.Inject
 
 class DitaOtTask extends DefaultTask {
     static final DEFAULT_TRANSTYPE = 'html5'
@@ -77,6 +79,14 @@ class DitaOtTask extends DefaultTask {
         PatternSet ps = new PatternSet()
         ps.include GlobPatterns.ALL_FILES
         ps.exclude 'temp/' + GlobPatterns.ALL_FILES
+    }
+
+    @InputFiles
+    FileCollection ditaOtClasspath
+
+    @Inject
+    IsolatedAntBuilder getAntBuilder() {
+        throw new UnsupportedOperationException();
     }
 
     /** Get input files for up-to-date check.
@@ -188,7 +198,8 @@ class DitaOtTask extends DefaultTask {
             File out = getOutputDirForFile(file)
             File propFile = getAssociatedFile(file, FileExtensions.PROPERTIES)
 
-            ant.ant(antfile: "${project.ditaOt.home}/build.xml") {
+            antBuilder.withClasspath(getDitaOtClasspath()).execute {
+                antfile = "${project.ditaOt.home}/build.xml"
                 property(name: Properties.ARGS_INPUT, location: file.getPath())
                 property(name: Properties.OUTPUT_DIR, location: out.getPath())
 
@@ -216,7 +227,7 @@ class DitaOtTask extends DefaultTask {
 
                 if (this.ditaVal || this.associatedDitaVal) {
                     property(name: Properties.ARGS_FILTER,
-                             location: getDitaValFile(file).getPath())
+                            location: getDitaValFile(file).getPath())
                 }
             }
         }
